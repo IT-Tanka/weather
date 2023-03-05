@@ -10,10 +10,10 @@ const SearchResult = ({ result }: ResultProps) => {
     <div className="result">
       <span>{result?.sys.country}</span>
       <span>{result?.name}</span>
-      <span>
-        {result?.main.temp_min} - {result?.main.temp_max} C
+      <span >
+        {result?.main.temp_min}  —  {result?.main.temp_max}  °C
       </span>
-      <span>{result?.weather[0].description}</span>
+      <span className="description">{result?.weather[0].description}</span>
     </div>
   );
 };

@@ -28,7 +28,7 @@ input {
 }
 
 button {
-  width: 15vmin;
+  width: 16vmin;
   height: 40px;
   cursor: pointer;
   background-color: #41b1e1;
@@ -47,10 +47,11 @@ button:hover {
   justify-content: center;
   font-size: calc(10px + 2vmin);
   gap: 1vmin;
-  transform: translateX(5vmin);
+  transform: translateX(8vmin);
 }
 .result {
   max-width: 800px;
+  text-transform: uppercase;
   width: 100%;
   margin: auto;
   display: flex;
@@ -60,3 +61,8 @@ button:hover {
   color: #ef2b48;
   gap: 2vmin;
 }
+.description{
+  text-transform: lowercase;
+  color: #217294;
+}
+
