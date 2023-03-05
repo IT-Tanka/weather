@@ -9,13 +9,12 @@ export interface IResult {
   main:{temp_min: number, temp_max: number},
   name: string,
   weather:[{description:string}],
-  sys:{country:string},
-  // pressure:string
+  sys:{country:string}
 }
 function App() {
   const [name, setName] = useState("");
-  const [result, setResult] = useState<IResult>({name:"",main:{temp_min:0, temp_max:0}, weather:[{description:""}],  id:0 ,sys:{country:" "}});
-
+  const [result, setResult] = useState<IResult|null>(null);
+  const [message, setMessage]=useState("");
 
   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
@@ -29,10 +28,9 @@ function App() {
       `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API_KEY}&units=metric`
     );
     if (response.ok) {
-      setResult((await response.json()));
-      console.log('result', result);
+      setResult((await response.json())); 
     } else {
-      setResult({name:"",main:{temp_min:0, temp_max:0},weather:[{description:""}],  id:0, sys:{country:" "} });
+      setResult(null);setMessage("no result for this city");
     }
   }
 
@@ -47,7 +45,8 @@ function App() {
           checkEnter={checkEnter}
           handleSearch={handleSearch}
         />
-        <SearchResult result={result} />
+        {result&&<SearchResult result={result} />}
+        {!result&&<span>{message}</span>}
       </main>
     </div>
   );
